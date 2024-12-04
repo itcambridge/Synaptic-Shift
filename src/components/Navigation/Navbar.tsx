@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,34 +16,34 @@ const navigation = {
         {
           title: 'Technology Services',
           items: [
-            { name: 'Cloud Transformation', href: '#' },
-            { name: 'AI & Automation', href: '#' },
-            { name: 'Digital Engineering', href: '#' },
-            { name: 'Data Analytics', href: '#' },
+            { name: 'Cloud Transformation', href: '/services/technology/cloud-transformation' },
+            { name: 'AI & Automation', href: '/services/technology/ai-automation' },
+            { name: 'Digital Engineering', href: '/services/technology/digital-engineering' },
+            { name: 'Data Analytics', href: '/services/technology/data-analytics' },
           ],
         },
         {
           title: 'Industry Solutions',
           items: [
-            { name: 'Financial Services', href: '#' },
-            { name: 'Healthcare', href: '#' },
-            { name: 'Manufacturing', href: '#' },
-            { name: 'Retail', href: '#' },
+            { name: 'Financial Services', href: '/services/industry/financial-services' },
+            { name: 'Healthcare', href: '/services/industry/healthcare' },
+            { name: 'Manufacturing', href: '/services/industry/manufacturing' },
+            { name: 'Retail', href: '/services/industry/retail' },
           ],
         },
       ],
     },
     {
       name: 'Industries',
-      href: '#',
+      href: '/industries',
     },
     {
       name: 'Insights',
-      href: '#',
+      href: '/insights',
     },
     {
       name: 'About',
-      href: '#',
+      href: '/about',
     },
   ],
 }
@@ -55,7 +57,7 @@ export default function Navbar() {
       <div className="bg-primary px-4 py-2 text-center text-sm font-medium text-black">
         <p>
           Discover how AI is transforming business{' '}
-          <Link href="#" className="underline hover:opacity-80">
+          <Link href="/services/technology/ai-automation" className="underline hover:opacity-80">
             Learn More →
           </Link>
         </p>
