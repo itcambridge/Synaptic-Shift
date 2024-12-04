@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +17,18 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional: Add some global styles for better typography */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  }
+  
+  code, pre {
+    font-family: var(--font-geist-mono), monospace;
+  }
 }
