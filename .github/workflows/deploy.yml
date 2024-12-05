@@ -36,25 +36,39 @@ jobs:
           LINODE_USERNAME: ${{ secrets.LINODE_USERNAME }}
           LINODE_PASSWORD: ${{ secrets.LINODE_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo "Starting deployment to $LINODE_HOST..."
           
           # Create a temporary script
           cat > deploy.sh << 'EOL'
           #!/bin/bash
+          echo "Logging into Docker Hub..."
+          echo "$2" | docker login --username "$1" --password-stdin
+          
+          echo "Pulling latest image..."
           docker pull $1/synaptic-shift:latest
+          
+          echo "Stopping existing container..."
           docker stop synaptic-shift || true
           docker rm synaptic-shift || true
+          
+          echo "Starting new container..."
           docker run -d \
             --name synaptic-shift \
             -p 80:3000 \
             --restart unless-stopped \
             $1/synaptic-shift:latest
+          
+          echo "Deployment complete!"
           EOL
           
           # Make script executable
           chmod +x deploy.sh
           
           # Copy script to server and execute
+          echo "Copying deployment script to server..."
           sshpass -p "$LINODE_PASSWORD" scp -o StrictHostKeyChecking=no deploy.sh $LINODE_USERNAME@$LINODE_HOST:/tmp/
-          sshpass -p "$LINODE_PASSWORD" ssh -o StrictHostKeyChecking=no $LINODE_USERNAME@$LINODE_HOST "bash /tmp/deploy.sh $DOCKER_USERNAME"
+          
+          echo "Executing deployment script..."
+          sshpass -p "$LINODE_PASSWORD" ssh -o StrictHostKeyChecking=no $LINODE_USERNAME@$LINODE_HOST "bash /tmp/deploy.sh $DOCKER_USERNAME '$DOCKER_PASSWORD'"
