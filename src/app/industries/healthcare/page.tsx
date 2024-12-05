@@ -6,7 +6,7 @@ import GridPattern from '@/components/Background/GridPattern'
 import PageTransition from '@/components/Layout/PageTransition'
 import GradientButton from '@/components/UI/GradientButton'
 import Navbar from '@/components/Navigation/Navbar'
-import HealthcareNetwork from '@/components/Effects/HealthcareNetwork'
+import DiagnosticLab from '@/components/Effects/DiagnosticLab'
 
 export default function Healthcare() {
   return (
@@ -36,14 +36,14 @@ export default function Healthcare() {
                   transition={{ duration: 0.8 }}
                   className="flex flex-col items-center space-y-8"
                 >
-                  {/* Healthcare Network Animation */}
+                  {/* Diagnostic Lab Animation */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="mb-8"
                   >
-                    <HealthcareNetwork />
+                    <DiagnosticLab />
                   </motion.div>
 
                   <motion.h1 

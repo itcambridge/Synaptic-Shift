@@ -7,7 +7,7 @@ import GridPattern from '@/components/Background/GridPattern'
 import PageTransition from '@/components/Layout/PageTransition'
 import GradientButton from '@/components/UI/GradientButton'
 import Navbar from '@/components/Navigation/Navbar'
-import FinancialGlobe from '@/components/Effects/FinancialGlobe'
+import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
 
 export default function Banking() {
   return (
@@ -37,14 +37,14 @@ export default function Banking() {
                   transition={{ duration: 0.8 }}
                   className="flex flex-col items-center space-y-8"
                 >
-                  {/* Financial Globe Animation */}
+                  {/* Intelligent Analysis Hub Animation */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="mb-8"
                   >
-                    <FinancialGlobe />
+                    <IntelligentAnalysisHub />
                   </motion.div>
 
                   <motion.h1 

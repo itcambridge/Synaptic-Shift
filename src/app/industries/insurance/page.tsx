@@ -6,7 +6,7 @@ import GridPattern from '@/components/Background/GridPattern'
 import PageTransition from '@/components/Layout/PageTransition'
 import GradientButton from '@/components/UI/GradientButton'
 import Navbar from '@/components/Navigation/Navbar'
-import MarketData from '@/components/Effects/MarketData'
+import InsuranceInnovation from '@/components/Effects/InsuranceInnovation'
 
 export default function Insurance() {
   return (
@@ -36,14 +36,14 @@ export default function Insurance() {
                   transition={{ duration: 0.8 }}
                   className="flex flex-col items-center space-y-8"
                 >
-                  {/* Market Data Animation */}
+                  {/* Insurance Innovation Animation */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="mb-8"
                   >
-                    <MarketData />
+                    <InsuranceInnovation />
                   </motion.div>
 
                   <motion.h1 

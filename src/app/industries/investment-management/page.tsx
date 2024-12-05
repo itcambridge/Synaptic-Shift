@@ -6,7 +6,7 @@ import GridPattern from '@/components/Background/GridPattern'
 import PageTransition from '@/components/Layout/PageTransition'
 import GradientButton from '@/components/UI/GradientButton'
 import Navbar from '@/components/Navigation/Navbar'
-import DataFlow from '@/components/Effects/DataFlow'
+import FinancialUniverse from '@/components/Effects/FinancialUniverse'
 
 export default function InvestmentManagement() {
   return (
@@ -36,14 +36,14 @@ export default function InvestmentManagement() {
                   transition={{ duration: 0.8 }}
                   className="flex flex-col items-center space-y-8"
                 >
-                  {/* Data Flow Animation */}
+                  {/* Financial Universe Animation */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="mb-8"
                   >
-                    <DataFlow />
+                    <FinancialUniverse />
                   </motion.div>
 
                   <motion.h1 

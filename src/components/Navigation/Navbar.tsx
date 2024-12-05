@@ -134,12 +134,12 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="w-screen max-w-md rounded-lg bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5"
+                          className="w-screen max-w-md rounded-lg border border-cyan-800/20 bg-black/50 p-4 shadow-lg backdrop-blur-md"
                         >
                           <div className="grid grid-cols-2 gap-8">
                             {item.megaMenu.map((section) => (
                               <div key={section.title}>
-                                <h3 className="text-sm font-semibold text-gray-900">
+                                <h3 className="text-sm font-semibold text-cyan-300">
                                   {section.title}
                                 </h3>
                                 <ul className="mt-4 space-y-4">
@@ -147,7 +147,7 @@ export default function Navbar() {
                                     <li key={subItem.name}>
                                       <Link
                                         href={subItem.href}
-                                        className="group relative text-sm text-gray-500"
+                                        className="group relative text-sm text-gray-300 hover:text-white"
                                       >
                                         <span className="relative">
                                           {subItem.name}
