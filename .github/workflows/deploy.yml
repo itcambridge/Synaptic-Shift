@@ -26,6 +26,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/synaptic-shift:latest
+          no-cache: true
 
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
@@ -46,6 +47,9 @@ jobs:
           echo "Logging into Docker Hub..."
           echo "$2" | docker login --username "$1" --password-stdin
           
+          echo "Removing old images..."
+          docker image rm -f $1/synaptic-shift:latest || true
+          
           echo "Pulling latest image..."
           docker pull $1/synaptic-shift:latest
           
@@ -59,6 +63,10 @@ jobs:
             -p 80:3000 \
             --restart unless-stopped \
             $1/synaptic-shift:latest
+          
+          echo "Verifying deployment..."
+          docker ps -a | grep synaptic-shift
+          docker images | grep synaptic-shift
           
           echo "Deployment complete!"
           EOL
