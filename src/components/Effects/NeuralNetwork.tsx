@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
@@ -165,10 +166,19 @@ export default function NeuralNetwork() {
   }, [])
 
   return (
-    <div 
-      ref={containerRef} 
-      className="relative h-96 w-96"
-      style={{ opacity: 0.7 }}
-    />
+    <motion.div
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ 
+        duration: 1.2,
+        ease: "easeOut"
+      }}
+    >
+      <div 
+        ref={containerRef} 
+        className="relative h-96 w-96"
+        style={{ opacity: 0.7 }}
+      />
+    </motion.div>
   )
 } 
