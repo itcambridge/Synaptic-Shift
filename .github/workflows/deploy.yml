@@ -1,0 +1,54 @@
+name: Deploy to Linode
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/synaptic-shift:latest
+
+      - name: Install sshpass
+        run: sudo apt-get install sshpass
+
+      - name: Deploy to Linode
+        env:
+          LINODE_HOST: ${{ secrets.LINODE_HOST }}
+          LINODE_USERNAME: ${{ secrets.LINODE_USERNAME }}
+          LINODE_PASSWORD: ${{ secrets.LINODE_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          sshpass -p "$LINODE_PASSWORD" ssh -o StrictHostKeyChecking=no $LINODE_USERNAME@$LINODE_HOST << 'ENDSSH'
+            # Pull the latest image
+            docker pull $DOCKER_USERNAME/synaptic-shift:latest
+            
+            # Stop and remove the existing container if it exists
+            docker stop synaptic-shift || true
+            docker rm synaptic-shift || true
+            
+            # Run the new container
+            docker run -d \
+              --name synaptic-shift \
+              -p 80:3000 \
+              --restart unless-stopped \
+              $DOCKER_USERNAME/synaptic-shift:latest
+          ENDSSH 
