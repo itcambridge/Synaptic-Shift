@@ -38,11 +38,18 @@ export default function ManufacturingFlow() {
 
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 400">
         {/* Production Line Base */}
-        <path
+        <motion.path
           d={productionPath}
-          stroke="rgba(0, 255, 255, 0.2)"
-          strokeWidth="4"
+          stroke="rgba(0, 255, 255, 0.4)"
+          strokeWidth="2"
           fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear"
+          }}
         />
 
         {/* Machine Nodes */}
@@ -200,6 +207,28 @@ export default function ManufacturingFlow() {
             }}
           />
         ))}
+
+        {/* Product Moving Along Path */}
+        <motion.circle
+          cx="0"
+          cy="0"
+          r="4"
+          fill="rgba(0, 255, 255, 0.8)"
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: [0.4, 1, 0.4],
+            offsetDistance: ["0%", "100%"]
+          }}
+          style={{
+            offsetPath: `path("${productionPath}")`,
+            offsetRotate: "auto"
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
       </svg>
     </div>
   )
