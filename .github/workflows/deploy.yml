@@ -28,7 +28,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/synaptic-shift:latest
 
       - name: Install sshpass
-        run: sudo apt-get install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
       - name: Deploy to Linode
         env:
@@ -37,18 +37,24 @@ jobs:
           LINODE_PASSWORD: ${{ secrets.LINODE_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
-          sshpass -p "$LINODE_PASSWORD" ssh -o StrictHostKeyChecking=no $LINODE_USERNAME@$LINODE_HOST << 'ENDSSH'
-            # Pull the latest image
-            docker pull $DOCKER_USERNAME/synaptic-shift:latest
-            
-            # Stop and remove the existing container if it exists
-            docker stop synaptic-shift || true
-            docker rm synaptic-shift || true
-            
-            # Run the new container
-            docker run -d \
-              --name synaptic-shift \
-              -p 80:3000 \
-              --restart unless-stopped \
-              $DOCKER_USERNAME/synaptic-shift:latest
-          ENDSSH 
+          echo "Starting deployment to $LINODE_HOST..."
+          
+          # Create a temporary script
+          cat > deploy.sh << 'EOL'
+          #!/bin/bash
+          docker pull $1/synaptic-shift:latest
+          docker stop synaptic-shift || true
+          docker rm synaptic-shift || true
+          docker run -d \
+            --name synaptic-shift \
+            -p 80:3000 \
+            --restart unless-stopped \
+            $1/synaptic-shift:latest
+          EOL
+          
+          # Make script executable
+          chmod +x deploy.sh
+          
+          # Copy script to server and execute
+          sshpass -p "$LINODE_PASSWORD" scp -o StrictHostKeyChecking=no deploy.sh $LINODE_USERNAME@$LINODE_HOST:/tmp/
+          sshpass -p "$LINODE_PASSWORD" ssh -o StrictHostKeyChecking=no $LINODE_USERNAME@$LINODE_HOST "bash /tmp/deploy.sh $DOCKER_USERNAME"
