@@ -35,7 +35,26 @@ const navigation = {
     },
     {
       name: 'Industries',
-      href: '/industries',
+      href: '#',
+      megaMenu: [
+        {
+          title: 'Financial Services',
+          items: [
+            { name: 'Banking & Capital Markets', href: '/industries/banking' },
+            { name: 'Insurance', href: '/industries/insurance' },
+            { name: 'Investment Management', href: '/industries/investment-management' },
+          ],
+        },
+        {
+          title: 'Other Industries',
+          items: [
+            { name: 'Healthcare', href: '/industries/healthcare' },
+            { name: 'Manufacturing', href: '/industries/manufacturing' },
+            { name: 'Retail', href: '/industries/retail' },
+            { name: 'Energy', href: '/industries/energy' },
+          ],
+        },
+      ],
     },
     {
       name: 'Insights',
@@ -70,9 +89,16 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link 
                 href="/" 
-                className="text-white transition-colors duration-200 hover:text-primary"
+                className="flex items-center gap-2 text-white transition-colors duration-200 hover:text-primary"
               >
-                Synaptic Shift
+                <Image
+                  src="/logo.png"
+                  alt="Synaptic Shift Logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+                <span>Synaptic Shift</span>
               </Link>
             </div>
 
