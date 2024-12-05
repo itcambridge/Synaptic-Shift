@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import GradientButton from '@/components/UI/GradientButton'
 
 const navigation = {
@@ -69,6 +69,7 @@ const navigation = {
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
     <nav className="fixed top-0 z-50 w-full">
@@ -102,6 +103,7 @@ export default function Navbar() {
               </Link>
             </div>
 
+            {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 {navigation.main.map((item) => (
@@ -128,13 +130,13 @@ export default function Navbar() {
                     </Link>
 
                     {item.megaMenu && openMenu === item.name && (
-                      <div className="absolute -left-4 top-0 pt-4">
+                      <div className="absolute -left-4 top-0 z-10 pt-4">
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="w-screen max-w-md rounded-lg border border-cyan-800/20 bg-black/50 p-4 shadow-lg backdrop-blur-md"
+                          className="w-screen max-w-md rounded-lg border border-cyan-800/20 bg-black/50 p-4 backdrop-blur-md"
                         >
                           <div className="grid grid-cols-2 gap-8">
                             {item.megaMenu.map((section) => (
@@ -170,13 +172,97 @@ export default function Navbar() {
 
             <div className="hidden space-x-4 md:flex">
               <Link href="/contact">
-                <GradientButton className="text-sm">
+                <GradientButton>
                   Get Started
                 </GradientButton>
               </Link>
             </div>
+
+            {/* Mobile menu button */}
+            <div className="flex md:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-black/50 hover:text-white focus:outline-none"
+              >
+                <span className="sr-only">Open main menu</span>
+                {isMobileMenuOpen ? (
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden"
+            >
+              <div className="space-y-1 px-4 pb-3 pt-2">
+                {navigation.main.map((item) => (
+                  <div key={item.name}>
+                    <button
+                      onClick={() => setOpenMenu(openMenu === item.name ? null : item.name)}
+                      className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-300 hover:text-white"
+                    >
+                      <span>{item.name}</span>
+                      {item.megaMenu && (
+                        <ChevronDownIcon
+                          className={`h-5 w-5 transition-transform duration-200 ${
+                            openMenu === item.name ? 'rotate-180' : ''
+                          }`}
+                        />
+                      )}
+                    </button>
+
+                    {item.megaMenu && openMenu === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="ml-4 space-y-2"
+                      >
+                        {item.megaMenu.map((section) => (
+                          <div key={section.title} className="pt-2">
+                            <h3 className="text-sm font-semibold text-cyan-300">
+                              {section.title}
+                            </h3>
+                            <ul className="mt-2 space-y-2">
+                              {section.items.map((subItem) => (
+                                <li key={subItem.name}>
+                                  <Link
+                                    href={subItem.href}
+                                    className="block text-sm text-gray-400 hover:text-white"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                ))}
+                <div className="pt-4">
+                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    <GradientButton className="w-full">
+                      Get Started
+                    </GradientButton>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   )
