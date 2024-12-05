@@ -47,26 +47,27 @@ jobs:
           echo "Logging into Docker Hub..."
           echo "$2" | docker login --username "$1" --password-stdin
           
-          echo "Removing old images..."
+          echo "Removing old images and containers..."
+          docker stop synaptic-shift synaptic-shift_web_1 || true
+          docker rm synaptic-shift synaptic-shift_web_1 || true
           docker image rm -f $1/synaptic-shift:latest || true
           
           echo "Pulling latest image..."
           docker pull $1/synaptic-shift:latest
           
-          echo "Stopping existing container..."
-          docker stop synaptic-shift || true
-          docker rm synaptic-shift || true
-          
           echo "Starting new container..."
           docker run -d \
             --name synaptic-shift \
-            -p 80:3000 \
+            -p 3000:3000 \
             --restart unless-stopped \
             $1/synaptic-shift:latest
           
           echo "Verifying deployment..."
           docker ps -a | grep synaptic-shift
           docker images | grep synaptic-shift
+          
+          echo "Container logs:"
+          docker logs synaptic-shift
           
           echo "Deployment complete!"
           EOL
