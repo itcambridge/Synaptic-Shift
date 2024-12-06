@@ -16,10 +16,10 @@ export default function IntelligentAnalysisHub() {
   const nodes = Array.from({ length: 12 }, (_, i) => ({
     id: i,
     x: 150 + Math.cos(i * (Math.PI * 2) / 12) * 100,
-    y: 150 + Math.sin(i * (Math.PI * 2) / 12) * 100,
+    y: 120 + Math.sin(i * (Math.PI * 2) / 12) * 100,
   }))
 
-  const centerNode = { x: 150, y: 150 }
+  const centerNode = { x: 150, y: 120 }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -160,7 +160,7 @@ export default function IntelligentAnalysisHub() {
 
       {/* Analysis Text */}
       <motion.div
-        className="absolute inset-x-0 top-1/2 mt-40 text-center"
+        className="absolute inset-x-0 top-3/4 mt-8 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}

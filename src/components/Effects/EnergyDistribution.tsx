@@ -63,7 +63,7 @@ export default function EnergyDistribution() {
         {/* Power Grid */}
         <motion.circle
           cx="150"
-          cy="50"
+          cy="40"
           r="20"
           fill="rgba(0, 255, 255, 0.1)"
           stroke="rgba(0, 255, 255, 0.6)"
@@ -85,7 +85,7 @@ export default function EnergyDistribution() {
           <g key={`building-${i}`}>
             <motion.rect
               x={70 + i * 20}
-              y={300 - height}
+              y={220 - height}
               width="15"
               height={height}
               fill="rgba(0, 255, 255, 0.1)"
@@ -108,7 +108,7 @@ export default function EnergyDistribution() {
               <motion.rect
                 key={`window-${i}-${j}`}
                 x={73 + i * 20}
-                y={290 - (j * 20)}
+                y={210 - (j * 20)}
                 width="9"
                 height="3"
                 fill="rgba(0, 255, 255, 0.3)"
@@ -131,7 +131,7 @@ export default function EnergyDistribution() {
         {buildingHeights.map((_, i) => (
           <motion.path
             key={`energy-line-${i}`}
-            d={`M 150,70 Q ${110 + i * 20},150 ${77.5 + i * 20},${300 - buildingHeights[i]}`}
+            d={`M 150,60 Q ${110 + i * 20},150 ${77.5 + i * 20},${220 - buildingHeights[i]}`}
             stroke="rgba(0, 255, 255, 0.4)"
             strokeWidth="1"
             fill="none"
@@ -153,7 +153,7 @@ export default function EnergyDistribution() {
         {/* Central Holographic Display */}
         <motion.rect
           x="90"
-          y="120"
+          y="60"
           width="120"
           height="50"
           fill="rgba(0, 255, 255, 0.1)"
@@ -171,7 +171,7 @@ export default function EnergyDistribution() {
         {/* Savings Display */}
         <motion.text
           x="100"
-          y="145"
+          y="85"
           fill="rgba(0, 255, 255, 0.8)"
           fontSize="8"
           initial={{ opacity: 0 }}
@@ -181,7 +181,7 @@ export default function EnergyDistribution() {
         </motion.text>
         <motion.text
           x="100"
-          y="157"
+          y="97"
           fill="rgba(0, 255, 255, 1)"
           fontSize="10"
           fontWeight="bold"
@@ -193,7 +193,7 @@ export default function EnergyDistribution() {
         <motion.text
           key={activeUpdate}
           x="150"
-          y="185"
+          y="125"
           fill="rgba(0, 255, 255, 0.8)"
           fontSize="8"
           textAnchor="middle"
@@ -205,22 +205,19 @@ export default function EnergyDistribution() {
           {energyUpdates[activeUpdate]}
         </motion.text>
 
-        {/* Status Text */}
-        <motion.div
-          className="absolute inset-x-0 bottom-4 text-center"
+        {/* Status Text - Moved inside SVG above buildings */}
+        <motion.text
+          x="150"
+          y="250"
+          fill="rgba(0, 255, 255, 0.8)"
+          fontSize="12"
+          textAnchor="middle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <motion.p
-            className="text-sm font-mono text-cyan-300"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Smart Grid Management
-          </motion.p>
-        </motion.div>
+          Smart Grid Management
+        </motion.text>
       </svg>
     </div>
   )

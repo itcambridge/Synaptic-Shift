@@ -20,7 +20,7 @@ const generateDNAPoints = (count: number) => {
     const y = (i / count) * 200 - 100 // Vertical position
     points.push({
       x1: x + 150,
-      y: y + 150,
+      y: y + 120,
       x2: -x + 150,
       angle
     })
@@ -193,7 +193,7 @@ export default function DiagnosticLab() {
 
       {/* Insights Text */}
       <motion.div
-        className="absolute inset-x-0 top-1/2 mt-40 text-center"
+        className="absolute inset-x-0 top-3/4 mt-8 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
