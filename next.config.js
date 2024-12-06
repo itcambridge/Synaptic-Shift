@@ -7,7 +7,12 @@ const nextConfig = {
   typescript: {
     // Disable TypeScript during production builds
     ignoreBuildErrors: true,
-  }
+  },
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+    return config;
+  },
+  output: 'standalone'
 }
 
 module.exports = nextConfig 
