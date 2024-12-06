@@ -1,7 +1,7 @@
 'use client'
 
-import { ReactNode } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import ParticleBackground from '@/components/Background/ParticleBackground'
 import GridPattern from '@/components/Background/GridPattern'
 import PageTransition from '@/components/Layout/PageTransition'
@@ -11,17 +11,17 @@ import Navbar from '@/components/Navigation/Navbar'
 interface ServicePageLayoutProps {
   title: string
   subtitle: string
-  children?: ReactNode
-  animation?: ReactNode
-  buttonText?: string
+  animation: React.ReactNode
+  buttonText: string
+  children: React.ReactNode
 }
 
 export default function ServicePageLayout({
   title,
   subtitle,
-  children,
   animation,
-  buttonText = "Get Started"
+  buttonText,
+  children,
 }: ServicePageLayoutProps) {
   return (
     <PageTransition>
@@ -33,7 +33,7 @@ export default function ServicePageLayout({
           <GridPattern />
           <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.1),rgba(0,0,0,0))]" />
         </div>
-        
+
         {/* Content */}
         <div className="relative z-10">
           {/* Hero Section */}
@@ -50,11 +50,9 @@ export default function ServicePageLayout({
                   transition={{ duration: 0.8 }}
                   className="flex flex-col items-center space-y-8"
                 >
-                  {animation && (
-                    <div className="relative">
-                      {animation}
-                    </div>
-                  )}
+                  <div className="relative">
+                    {animation}
+                  </div>
 
                   <motion.h1 
                     className="text-center text-7xl font-bold text-primary drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
@@ -70,16 +68,18 @@ export default function ServicePageLayout({
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
                   >
-                    <p className="whitespace-nowrap tracking-wide">{subtitle}</p>
+                    <p className="tracking-wide">{subtitle}</p>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                   >
-                    <GradientButton>
-                      {buttonText}
-                    </GradientButton>
+                    <Link href="/assessment">
+                      <GradientButton>
+                        {buttonText}
+                      </GradientButton>
+                    </Link>
                   </motion.div>
                 </motion.div>
               </div>

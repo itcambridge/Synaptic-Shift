@@ -171,7 +171,7 @@ export default function Navbar() {
             </div>
 
             <div className="hidden space-x-4 md:flex">
-              <Link href="/contact">
+              <Link href="/assessment">
                 <GradientButton>
                   Get Started
                 </GradientButton>
@@ -253,7 +253,7 @@ export default function Navbar() {
                   </div>
                 ))}
                 <div className="pt-4">
-                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link href="/assessment" onClick={() => setIsMobileMenuOpen(false)}>
                     <GradientButton className="w-full">
                       Get Started
                     </GradientButton>
