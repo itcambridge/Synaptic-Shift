@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import FinancialUniverse from '@/components/Effects/FinancialUniverse'
+import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
 
 export default function Banking() {
   return (
     <ServicePageLayout
-      title="Banking Innovation"
-      subtitle="Transform banking operations with AI-driven solutions and digital transformation"
+      title="Banking & Capital Markets"
+      subtitle="Transform banking for the digital age. Innovate with AI-driven financial solutions and secure platforms."
       animation={
         <div className="absolute left-1/2 -top-80 -translate-x-1/2">
           <div className="scale-75">
-            <FinancialUniverse />
+            <IntelligentAnalysisHub />
           </div>
         </div>
       }
