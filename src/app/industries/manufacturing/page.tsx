@@ -10,7 +10,7 @@ export default function Manufacturing() {
       title="Manufacturing Excellence"
       subtitle="Transform manufacturing with smart automation and data-driven optimization"
       animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+        <div className="absolute left-1/2 -top-60 -translate-x-1/2">
           <div className="scale-75">
             <ManufacturingFlow />
           </div>
