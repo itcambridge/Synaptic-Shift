@@ -2,9 +2,13 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies including dev dependencies
 COPY package*.json ./
-RUN npm ci
+RUN npm install
+
+# Install additional required packages
+RUN npm install three@latest
+RUN npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-next
 
 # Copy source
 COPY . .
