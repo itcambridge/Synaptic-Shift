@@ -4,21 +4,23 @@ WORKDIR /app
 
 # Install dependencies including dev dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install --verbose
 
 # Install additional required packages
-RUN npm install three@latest
-RUN npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-next
+RUN npm install --save three@latest
+RUN npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint eslint-config-next
 
 # Copy source
 COPY . .
 
-# Clear any existing build files
+# Clear any existing build files and show directory contents
 RUN rm -rf .next
+RUN ls -la
 
-# Production build
+# Production build with detailed output
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV=production
+ENV CI=false
 RUN npm run build
 
 # Production image, copy all the files and run next
