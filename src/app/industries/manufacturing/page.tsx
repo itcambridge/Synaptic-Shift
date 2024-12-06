@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import ManufacturingFlow from '@/components/Effects/ManufacturingFlow'
 
 export default function Manufacturing() {
   return (
@@ -10,9 +10,9 @@ export default function Manufacturing() {
       title="Manufacturing Excellence"
       subtitle="Transform manufacturing with smart automation and data-driven optimization"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+          <div className="scale-75">
+            <ManufacturingFlow />
           </div>
         </div>
       }

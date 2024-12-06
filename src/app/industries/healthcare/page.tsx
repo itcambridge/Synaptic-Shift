@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import DiagnosticLab from '@/components/Effects/DiagnosticLab'
 
 export default function Healthcare() {
   return (
@@ -10,9 +10,9 @@ export default function Healthcare() {
       title="Healthcare Innovation"
       subtitle="Transform healthcare delivery with AI-driven solutions and digital innovation"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+          <div className="scale-75">
+            <DiagnosticLab />
           </div>
         </div>
       }
