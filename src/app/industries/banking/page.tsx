@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
 import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
 
