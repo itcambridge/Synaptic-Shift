@@ -4,9 +4,12 @@ WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm install --legacy-peer-deps --no-optional
-RUN npm install three@latest @react-three/fiber @react-three/drei --legacy-peer-deps --no-optional
-RUN npm install --save-dev @types/three
+
+# Install dependencies with verbose logging
+RUN npm install --legacy-peer-deps --no-optional --verbose
+RUN npm install three@latest @react-three/fiber @react-three/drei --legacy-peer-deps --no-optional --verbose
+RUN npm install sharp --verbose
+RUN npm install --save-dev @types/three --verbose
 
 # Copy source
 COPY . .
@@ -22,11 +25,12 @@ ENV CI=false
 ENV DEBUG=* 
 ENV NODE_OPTIONS="--max_old_space_size=4096"
 
-# Show installed packages
+# Show installed packages and environment
 RUN npm list --depth=0
+RUN node -v && npm -v
 
-# Build with increased memory
-RUN NODE_OPTIONS=--max_old_space_size=4096 npm run build
+# Build with increased memory and verbose output
+RUN NODE_OPTIONS=--max_old_space_size=4096 npm run build --verbose
 
 EXPOSE 3000
 
