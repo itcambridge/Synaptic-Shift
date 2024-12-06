@@ -14,23 +14,13 @@ const navigation = {
       href: '#',
       megaMenu: [
         {
-          title: 'Technology Services',
           items: [
-            { name: 'Cloud Transformation', href: '/services/technology/cloud-transformation' },
+            { name: 'Cloud', href: '/services/technology/cloud' },
             { name: 'AI & Automation', href: '/services/technology/ai-automation' },
             { name: 'Digital Engineering', href: '/services/technology/digital-engineering' },
             { name: 'Data Analytics', href: '/services/technology/data-analytics' },
           ],
-        },
-        {
-          title: 'Industry Solutions',
-          items: [
-            { name: 'Financial Services', href: '/services/industry/financial-services' },
-            { name: 'Healthcare', href: '/services/industry/healthcare' },
-            { name: 'Manufacturing', href: '/services/industry/manufacturing' },
-            { name: 'Retail', href: '/services/industry/retail' },
-          ],
-        },
+        }
       ],
     },
     {
@@ -38,22 +28,16 @@ const navigation = {
       href: '#',
       megaMenu: [
         {
-          title: 'Financial Services',
           items: [
             { name: 'Banking & Capital Markets', href: '/industries/banking' },
             { name: 'Insurance', href: '/industries/insurance' },
             { name: 'Investment Management', href: '/industries/investment-management' },
-          ],
-        },
-        {
-          title: 'Other Industries',
-          items: [
             { name: 'Healthcare', href: '/industries/healthcare' },
             { name: 'Manufacturing', href: '/industries/manufacturing' },
             { name: 'Retail', href: '/industries/retail' },
             { name: 'Energy', href: '/industries/energy' },
           ],
-        },
+        }
       ],
     },
     {
@@ -136,15 +120,12 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="w-screen max-w-md rounded-lg border border-cyan-800/20 bg-black/50 p-4 backdrop-blur-md"
+                          className="w-screen max-w-md rounded-lg border border-cyan-800/20 bg-black/80 p-4 backdrop-blur-md"
                         >
-                          <div className="grid grid-cols-2 gap-8">
+                          <div className="grid grid-cols-1 gap-4">
                             {item.megaMenu.map((section) => (
-                              <div key={section.title}>
-                                <h3 className="text-sm font-semibold text-cyan-300">
-                                  {section.title}
-                                </h3>
-                                <ul className="mt-4 space-y-4">
+                              <div key={section.items[0].name}>
+                                <ul className="space-y-4">
                                   {section.items.map((subItem) => (
                                     <li key={subItem.name}>
                                       <Link
@@ -229,10 +210,7 @@ export default function Navbar() {
                         className="ml-4 space-y-2"
                       >
                         {item.megaMenu.map((section) => (
-                          <div key={section.title} className="pt-2">
-                            <h3 className="text-sm font-semibold text-cyan-300">
-                              {section.title}
-                            </h3>
+                          <div key={section.items[0].name}>
                             <ul className="mt-2 space-y-2">
                               {section.items.map((subItem) => (
                                 <li key={subItem.name}>

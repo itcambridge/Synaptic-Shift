@@ -62,15 +62,15 @@ export default function ServicesGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 px-4 md:px-0"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Our Services</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Services</h2>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
             Comprehensive cloud solutions to drive your digital transformation journey
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-0">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
