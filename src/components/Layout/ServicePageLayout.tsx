@@ -25,7 +25,7 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   return (
     <PageTransition>
-      <main className="relative bg-black">
+      <main className="relative bg-black overflow-x-hidden">
         <Navbar />
         {/* Background Effects */}
         <div className="fixed inset-0 z-0">

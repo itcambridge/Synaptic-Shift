@@ -58,13 +58,15 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full">
       {/* Top Banner */}
-      <div className="bg-primary px-4 py-2 text-center text-sm font-medium text-black">
-        <p>
-          Discover how AI is transforming business{' '}
-          <Link href="/services/technology/ai-automation" className="underline hover:opacity-80">
-            Learn More →
-          </Link>
-        </p>
+      <div className="bg-primary px-4 py-2 text-center text-sm font-medium text-black overflow-x-hidden">
+        <div className="mx-auto max-w-7xl">
+          <p className="truncate">
+            Discover how AI is transforming business{' '}
+            <Link href="/services/technology/ai-automation" className="underline hover:opacity-80">
+              Learn More →
+            </Link>
+          </p>
+        </div>
       </div>
 
       {/* Main Navigation */}
