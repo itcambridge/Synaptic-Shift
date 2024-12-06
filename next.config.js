@@ -8,6 +8,11 @@ const nextConfig = {
     // Disable TypeScript during production builds
     ignoreBuildErrors: true,
   },
+  output: 'standalone',
+  experimental: {
+    // Enable if needed for app directory
+    appDir: true,
+  },
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
     // Make webpack more permissive
