@@ -1,18 +1,17 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import FinancialUniverse from '@/components/Effects/FinancialUniverse'
 
 export default function InvestmentManagement() {
   return (
     <ServicePageLayout
-      title="Investment Management"
-      subtitle="Transform investment strategies with AI-driven insights and advanced analytics"
+      title="Investment Management Innovation"
+      subtitle="Transform investment strategies with AI-driven insights and automation"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+          <div className="scale-75">
+            <FinancialUniverse />
           </div>
         </div>
       }

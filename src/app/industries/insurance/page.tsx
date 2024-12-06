@@ -1,8 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import InsuranceCityscape from '@/components/Effects/InsuranceCityscape'
 
 export default function Insurance() {
   return (
@@ -10,9 +9,9 @@ export default function Insurance() {
       title="Insurance Innovation"
       subtitle="Modernize insurance operations with AI-driven solutions and digital transformation"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+          <div className="scale-75">
+            <InsuranceCityscape />
           </div>
         </div>
       }
