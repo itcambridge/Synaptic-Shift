@@ -1,21 +1,32 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    // Disable ESLint during production builds
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // Disable TypeScript during production builds
     ignoreBuildErrors: true,
   },
   output: 'standalone',
   experimental: {
-    // Enable if needed for app directory
     appDir: true,
   },
+  swcMinify: false,
   webpack: (config) => {
-    config.resolve.fallback = { fs: false };
-    // Make webpack more permissive
+    config.resolve.fallback = { 
+      fs: false,
+      net: false,
+      tls: false,
+      crypto: require.resolve('crypto-browserify'),
+      stream: require.resolve('stream-browserify'),
+      url: require.resolve('url/'),
+      zlib: require.resolve('browserify-zlib'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      assert: require.resolve('assert/'),
+      os: require.resolve('os-browserify/browser'),
+      path: require.resolve('path-browserify'),
+      'process/browser': require.resolve('process/browser'),
+    };
     config.resolve.preferRelative = true;
     config.module.rules.push({
       test: /\.tsx?$/,

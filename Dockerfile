@@ -1,14 +1,11 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
-# Install build essentials
-RUN apk add --no-cache python3 make g++ git
-
 # Install dependencies
 COPY package*.json ./
-RUN npm install --legacy-peer-deps
-RUN npm install three@latest @react-three/fiber @react-three/drei --legacy-peer-deps
+RUN npm install --legacy-peer-deps --no-optional
+RUN npm install three@latest @react-three/fiber @react-three/drei --legacy-peer-deps --no-optional
 RUN npm install --save-dev @types/three
 
 # Copy source
@@ -23,11 +20,13 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV=production
 ENV CI=false
 ENV DEBUG=* 
+ENV NODE_OPTIONS="--max_old_space_size=4096"
 
 # Show installed packages
 RUN npm list --depth=0
 
-RUN npm run build --verbose
+# Build with increased memory
+RUN NODE_OPTIONS=--max_old_space_size=4096 npm run build
 
 EXPOSE 3000
 
