@@ -10,8 +10,8 @@ export default function Banking() {
       title="Banking & Capital Markets"
       subtitle="Transform banking for the digital age. Innovate with AI-driven financial solutions and secure platforms."
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
+        <div className="relative w-full h-[200px] md:h-[300px] flex items-center justify-center mt-4">
+          <div className="scale-120 md:scale-90">
             <IntelligentAnalysisHub />
           </div>
         </div>

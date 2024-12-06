@@ -48,14 +48,14 @@ export default function ServicePageLayout({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="flex flex-col items-center space-y-8"
+                  className="flex flex-col items-center space-y-8 mt-8 md:mt-10"
                 >
                   <div className="relative">
                     {animation}
                   </div>
 
                   <motion.h1 
-                    className="text-center text-4xl md:text-7xl font-bold text-primary drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+                    className="text-center text-4xl md:text-7xl font-bold text-primary drop-shadow-[0_0_10px_rgba(0,255,255,0.3)] mt-32 md:mt-48"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.8 }}
@@ -63,7 +63,7 @@ export default function ServicePageLayout({
                     {title}
                   </motion.h1>
                   <motion.div 
-                    className="flex max-w-3xl flex-col gap-4 text-center text-base md:text-xl leading-relaxed text-gray-100 drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)]"
+                    className="flex max-w-3xl flex-col gap-4 text-center text-base md:text-xl leading-relaxed text-gray-100 drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)] mt-4"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
@@ -74,6 +74,7 @@ export default function ServicePageLayout({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
+                    className="mt-8"
                   >
                     <Link href="/assessment">
                       <GradientButton>

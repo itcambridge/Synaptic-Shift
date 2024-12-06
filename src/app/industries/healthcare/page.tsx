@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import DiagnosticLab from '@/components/Effects/DiagnosticLab'
 
 export default function Healthcare() {
   return (
     <ServicePageLayout
       title="Healthcare Innovation"
-      subtitle="Transform healthcare delivery with AI-driven solutions and digital innovation"
+      subtitle="Transform healthcare delivery with intelligent digital solutions"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="relative w-full h-[200px] md:h-[300px] flex items-center justify-center mt-4">
+          <div className="scale-120 md:scale-90">
+            <DiagnosticLab />
           </div>
         </div>
       }
@@ -40,8 +40,8 @@ export default function Healthcare() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Digital Health</h3>
-              <p className="mt-3 text-cyan-100/90">Telemedicine and remote patient monitoring</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Clinical Decision Support</h3>
+              <p className="mt-3 text-cyan-100/90">Advanced analytics for diagnostic accuracy</p>
             </motion.div>
 
             <motion.div
@@ -51,8 +51,8 @@ export default function Healthcare() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Clinical Operations</h3>
-              <p className="mt-3 text-cyan-100/90">Streamlined workflows and resource optimization</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Remote Patient Monitoring</h3>
+              <p className="mt-3 text-cyan-100/90">IoT-enabled continuous patient care</p>
             </motion.div>
 
             <motion.div
@@ -62,8 +62,8 @@ export default function Healthcare() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Data Security</h3>
-              <p className="mt-3 text-cyan-100/90">HIPAA-compliant healthcare data protection</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Healthcare Operations</h3>
+              <p className="mt-3 text-cyan-100/90">Streamlined workflow and resource optimization</p>
             </motion.div>
 
             <motion.div
@@ -73,8 +73,8 @@ export default function Healthcare() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Research & Development</h3>
-              <p className="mt-3 text-cyan-100/90">AI-powered medical research and analytics</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Data Security</h3>
+              <p className="mt-3 text-cyan-100/90">HIPAA-compliant security solutions</p>
             </motion.div>
 
             <motion.div
@@ -84,8 +84,8 @@ export default function Healthcare() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Patient Experience</h3>
-              <p className="mt-3 text-cyan-100/90">Digital solutions for enhanced patient engagement</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Telemedicine Platform</h3>
+              <p className="mt-3 text-cyan-100/90">Secure virtual healthcare delivery</p>
             </motion.div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function Healthcare() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white">Success Stories</h2>
             <p className="mt-4 text-lg md:text-xl text-gray-300">
-              See how we've helped healthcare organizations transform their operations
+              See how we've helped healthcare providers transform their operations
             </p>
           </motion.div>
         </div>

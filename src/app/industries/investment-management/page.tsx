@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import FinancialUniverse from '@/components/Effects/FinancialUniverse'
 
 export default function InvestmentManagement() {
   return (
     <ServicePageLayout
-      title="Investment Management"
-      subtitle="Transform investment strategies with AI-driven insights and advanced analytics"
+      title="Investment Management Innovation"
+      subtitle="Transform investment strategies with AI-driven insights and automation"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="relative w-full h-[200px] md:h-[300px] flex items-center justify-center mt-4">
+          <div className="scale-120 md:scale-90">
+            <FinancialUniverse />
           </div>
         </div>
       }
@@ -29,8 +29,8 @@ export default function InvestmentManagement() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Portfolio Analytics</h3>
-              <p className="mt-3 text-cyan-100/90">Advanced analytics for portfolio optimization</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Portfolio Optimization</h3>
+              <p className="mt-3 text-cyan-100/90">AI-driven portfolio management and rebalancing</p>
             </motion.div>
 
             <motion.div
@@ -40,8 +40,8 @@ export default function InvestmentManagement() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Risk Management</h3>
-              <p className="mt-3 text-cyan-100/90">Real-time risk assessment and monitoring</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Risk Analytics</h3>
+              <p className="mt-3 text-cyan-100/90">Advanced risk assessment and monitoring</p>
             </motion.div>
 
             <motion.div
@@ -52,7 +52,7 @@ export default function InvestmentManagement() {
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
               <h3 className="text-xl font-semibold text-cyan-300">Market Intelligence</h3>
-              <p className="mt-3 text-cyan-100/90">AI-powered market analysis and predictions</p>
+              <p className="mt-3 text-cyan-100/90">Real-time market analysis and predictions</p>
             </motion.div>
 
             <motion.div
@@ -62,8 +62,8 @@ export default function InvestmentManagement() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Investment Strategy</h3>
-              <p className="mt-3 text-cyan-100/90">Data-driven investment decision making</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Automated Trading</h3>
+              <p className="mt-3 text-cyan-100/90">Intelligent algorithmic trading solutions</p>
             </motion.div>
 
             <motion.div
@@ -73,8 +73,8 @@ export default function InvestmentManagement() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Client Reporting</h3>
-              <p className="mt-3 text-cyan-100/90">Automated, insightful reporting solutions</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Client Analytics</h3>
+              <p className="mt-3 text-cyan-100/90">Data-driven client insights and reporting</p>
             </motion.div>
 
             <motion.div
@@ -84,8 +84,8 @@ export default function InvestmentManagement() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Compliance</h3>
-              <p className="mt-3 text-cyan-100/90">Automated regulatory compliance monitoring</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Compliance Management</h3>
+              <p className="mt-3 text-cyan-100/90">Automated regulatory compliance and reporting</p>
             </motion.div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function InvestmentManagement() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white">Success Stories</h2>
             <p className="mt-4 text-lg md:text-xl text-gray-300">
-              See how we've helped investment firms transform their operations
+              See how we've helped investment managers transform their operations
             </p>
           </motion.div>
         </div>

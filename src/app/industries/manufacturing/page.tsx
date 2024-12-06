@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import ManufacturingFlow from '@/components/Effects/ManufacturingFlow'
 
 export default function Manufacturing() {
   return (
     <ServicePageLayout
-      title="Manufacturing Excellence"
-      subtitle="Transform manufacturing with smart automation and data-driven optimization"
+      title="Manufacturing Innovation"
+      subtitle="Transform your manufacturing operations with intelligent automation"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="relative w-full h-[200px] md:h-[300px] flex items-center justify-center mt-4">
+          <div className="scale-120 md:scale-90">
+            <ManufacturingFlow />
           </div>
         </div>
       }
@@ -29,8 +29,8 @@ export default function Manufacturing() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Smart Factory</h3>
-              <p className="mt-3 text-cyan-100/90">IoT-enabled manufacturing automation</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Smart Factory Solutions</h3>
+              <p className="mt-3 text-cyan-100/90">Implement IoT and automation for smarter operations</p>
             </motion.div>
 
             <motion.div
@@ -51,8 +51,8 @@ export default function Manufacturing() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Quality Control</h3>
-              <p className="mt-3 text-cyan-100/90">Automated quality assurance systems</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Supply Chain Optimization</h3>
+              <p className="mt-3 text-cyan-100/90">End-to-end supply chain visibility and control</p>
             </motion.div>
 
             <motion.div
@@ -62,8 +62,8 @@ export default function Manufacturing() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Supply Chain</h3>
-              <p className="mt-3 text-cyan-100/90">Real-time supply chain optimization</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Quality Control</h3>
+              <p className="mt-3 text-cyan-100/90">Advanced quality assurance with machine learning</p>
             </motion.div>
 
             <motion.div
@@ -73,8 +73,8 @@ export default function Manufacturing() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Process Optimization</h3>
-              <p className="mt-3 text-cyan-100/90">Data-driven manufacturing efficiency</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Digital Twin Technology</h3>
+              <p className="mt-3 text-cyan-100/90">Virtual modeling for process optimization</p>
             </motion.div>
 
             <motion.div
@@ -84,8 +84,8 @@ export default function Manufacturing() {
               viewport={{ once: true }}
               className="rounded-2xl border border-cyan-800/20 bg-black/50 p-6 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">Workforce Innovation</h3>
-              <p className="mt-3 text-cyan-100/90">Digital tools for enhanced productivity</p>
+              <h3 className="text-xl font-semibold text-cyan-300">Workforce Augmentation</h3>
+              <p className="mt-3 text-cyan-100/90">AR/VR solutions for enhanced productivity</p>
             </motion.div>
           </div>
         </div>

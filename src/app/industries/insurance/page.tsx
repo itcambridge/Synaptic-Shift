@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import InsuranceCityscape from '@/components/Effects/InsuranceCityscape'
 
 export default function Insurance() {
   return (
@@ -10,9 +10,9 @@ export default function Insurance() {
       title="Insurance Innovation"
       subtitle="Modernize insurance operations with AI-driven solutions and digital transformation"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
-          <div className="scale-150">
-            <IntelligentAnalysisHub />
+        <div className="relative w-full h-[200px] md:h-[300px] flex items-center justify-center mt-4">
+          <div className="scale-120 md:scale-90">
+            <InsuranceCityscape />
           </div>
         </div>
       }
