@@ -5,36 +5,34 @@ WORKDIR /app
 # Install dependencies
 COPY package*.json ./
 
-# Install dependencies with verbose logging
-RUN npm install --legacy-peer-deps --no-optional --verbose
-RUN npm install three@latest @react-three/fiber @react-three/drei --legacy-peer-deps --no-optional --verbose
-RUN npm install sharp --verbose
-RUN npm install --save-dev @types/three --verbose
+# Install all dependencies in one step to reduce layers
+RUN npm install --legacy-peer-deps --no-optional \
+    && npm install sharp \
+    && npm install three@latest @react-three/fiber @react-three/drei --legacy-peer-deps \
+    && npm install --save-dev @types/three
 
 # Copy source
 COPY . .
 
-# Clear any existing build files
+# Clear any existing build files and cache
 RUN rm -rf .next
 RUN npm cache clean --force
 
-# Production build with debug output
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV NODE_ENV=production
-ENV CI=false
-ENV DEBUG=* 
-ENV NODE_OPTIONS="--max_old_space_size=4096"
+# Set environment variables
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    NODE_ENV=production \
+    CI=false \
+    NODE_OPTIONS="--max_old_space_size=8192"
 
-# Show installed packages and environment
-RUN npm list --depth=0
-RUN node -v && npm -v
+# Debug information
+RUN node -v && npm -v && npm list --depth=0
 
-# Build with increased memory and verbose output
-RUN NODE_OPTIONS=--max_old_space_size=4096 npm run build --verbose
+# Build with debugging
+RUN npm run build || (cat /app/.next/error.log && exit 1)
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=3000 \
+    HOSTNAME="0.0.0.0"
 
 CMD ["npm", "start"] 
