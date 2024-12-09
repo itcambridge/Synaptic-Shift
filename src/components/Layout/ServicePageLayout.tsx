@@ -59,7 +59,7 @@ export default function ServicePageLayout({
                   </div>
 
                   <motion.h1 
-                    className="text-center text-4xl md:text-7xl font-bold text-primary drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+                    className="text-center text-4xl md:text-7xl font-bold text-primary drop-shadow-[0_0_10px_rgba(0,255,255,0.3)] md:pt-0 pt-8"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.8 }}

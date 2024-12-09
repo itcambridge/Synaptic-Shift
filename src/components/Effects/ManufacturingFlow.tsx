@@ -13,19 +13,19 @@ const insights = [
 
 // Machine positions for the production line
 const machines = [
-  { x: 30, y: 120, width: 45, height: 60 },  // Raw material intake
-  { x: 95, y: 120, width: 45, height: 60 }, // Processing
-  { x: 160, y: 120, width: 45, height: 60 }, // Assembly
-  { x: 225, y: 120, width: 45, height: 60 }  // Final product
+  { x: 30, y: 220, width: 45, height: 60 },  // Raw material intake
+  { x: 95, y: 220, width: 45, height: 60 }, // Processing
+  { x: 160, y: 220, width: 45, height: 60 }, // Assembly
+  { x: 225, y: 220, width: 45, height: 60 }  // Final product
 ]
 
 // Particle paths through the machines
 const particlePath = [
-  { x: 30, y: 150 },   // Start
-  { x: 80, y: 150 },   // Into first machine
-  { x: 145, y: 150 },  // Into second machine
-  { x: 212, y: 150 },  // Into third machine
-  { x: 270, y: 150 },  // Final position
+  { x: 60, y: 180 },   // Start
+  { x: 80, y: 180 },   // Into first machine
+  { x: 145, y: 180 },  // Into second machine
+  { x: 212, y: 180 },  // Into third machine
+  { x: 270, y: 180 },  // Final position
 ]
 
 export default function ManufacturingFlow() {
@@ -65,11 +65,11 @@ export default function ManufacturingFlow() {
           }}
         />
 
-        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 300">
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 350">
           {/* Dashboard Display */}
           <motion.rect
             x="50"
-            y="30"
+            y="80"
             width="200"
             height="60"
             fill="rgba(0, 255, 255, 0.1)"
@@ -86,7 +86,7 @@ export default function ManufacturingFlow() {
 
           {/* Efficiency Graph in Dashboard */}
           <motion.path
-            d="M 80,50 L 90,48 L 100,52 L 110,48 L 120,52 L 130,48 L 140,52 L 150,48 L 160,52 L 170,48 L 180,52 L 190,48 L 200,52"
+            d="M 80,102 L 90,104 L 100,102 L 110,98 L 120,104 L 130,100 L 140,102 L 150,100 L 160,102 L 170,100 L 180,100 L 190,98 L 200,96"
             stroke="rgba(0, 255, 255, 0.8)"
             strokeWidth="2"
             fill="none"
@@ -103,7 +103,7 @@ export default function ManufacturingFlow() {
           {/* Production Line Base */}
           <motion.rect
             x="30"
-            y="170"
+            y="190"
             width="240"
             height="4"
             fill="rgba(0, 255, 255, 0.3)"
@@ -204,7 +204,7 @@ export default function ManufacturingFlow() {
 
         {/* Insights Text */}
         <motion.div
-          className="absolute bottom-8 inset-x-0 text-center"
+          className="absolute top-32 inset-x-0 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}

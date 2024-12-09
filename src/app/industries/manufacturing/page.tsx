@@ -9,7 +9,11 @@ export default function ManufacturingPage() {
       title="Manufacturing Excellence"
       subtitle="Transform manufacturing with smart automation and data-driven optimization"
       buttonText="Explore Manufacturing Solutions"
-      animation={<ManufacturingFlow />}
+      animation={
+        <div className="-mb-20">
+          <ManufacturingFlow />
+        </div>
+      }
     >
       {/* Rest of the page content */}
     </IndustryPageLayout>
