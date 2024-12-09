@@ -45,7 +45,6 @@ export default function InsuranceCityscape() {
   }, [])
 
   return (
-    // HEIGHT: Overall container height with responsive positioning
     <div className="relative h-96 w-96 md:mt-0 mt-20">
       {/* Background Glow */}
       <motion.div
