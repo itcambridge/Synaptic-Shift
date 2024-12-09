@@ -194,7 +194,7 @@ export default function About() {
                   To be the trusted partner that empowers businesses to innovate fearlessly and thrive in a rapidly evolving digital landscape. At Synaptic Shift, we are not just adapting to the future but creating it.
                 </p>
                 <div className="flex justify-center">
-                  <GradientButton href="/contact">
+                  <GradientButton href="/assessment">
                     Let's Create the Future Together
                   </GradientButton>
                 </div>

@@ -74,23 +74,25 @@ export default function ServicePageLayout({
                   >
                     <p className="tracking-wide px-4 md:px-0">{subtitle}</p>
                   </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                  >
-                    {onButtonClick ? (
-                      <GradientButton onClick={onButtonClick}>
-                        {buttonText}
-                      </GradientButton>
-                    ) : (
-                      <Link href="/assessment">
-                        <GradientButton>
+                  {buttonText && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6, duration: 0.8 }}
+                    >
+                      {onButtonClick ? (
+                        <GradientButton onClick={onButtonClick}>
                           {buttonText}
                         </GradientButton>
-                      </Link>
-                    )}
-                  </motion.div>
+                      ) : (
+                        <Link href="/subscribe">
+                          <GradientButton>
+                            {buttonText}
+                          </GradientButton>
+                        </Link>
+                      )}
+                    </motion.div>
+                  )}
                 </motion.div>
               </div>
             </div>

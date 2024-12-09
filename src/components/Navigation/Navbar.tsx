@@ -47,7 +47,7 @@ const navigation = {
         {
           items: [
             { name: 'Latest Articles', href: '/insights' },
-            { name: 'AI & Finance', href: '/insights/category/ai-finance' },
+            { name: 'AI & Finance', href: '/insights/ai-finance' },
             { name: 'Manufacturing', href: '/insights/category/manufacturing' },
             { name: 'Security', href: '/insights/category/security' },
           ],

@@ -30,9 +30,8 @@ export default function ProcessFlow() {
   }
 
   const nodeVariants = {
-    initial: { scale: 0.8, opacity: 0 },
+    initial: { opacity: 0 },
     animate: { 
-      scale: 1, 
       opacity: 1,
       transition: {
         duration: 1,
@@ -56,14 +55,15 @@ export default function ProcessFlow() {
 
   return (
     <div className="relative h-96 w-96">
+      {/* Main SVG viewBox - adjust 400 height to change overall scaling */}
       <svg
-        viewBox="0 0 400 400"
+        viewBox="0 0 500 500"
         className="absolute inset-0 h-full w-full"
       >
-        {/* Background glow effect */}
+        {/* Background glow effect - adjust cy="200" to move up/down */}
         <motion.circle
-          cx="200"
-          cy="200"
+          cx="250"
+          cy="300" // Vertical position of the glow circle
           r="180"
           fill="none"
           stroke="rgba(0, 255, 255, 0.1)"
@@ -73,12 +73,12 @@ export default function ProcessFlow() {
           animate="animate"
         />
 
-        {/* Process nodes */}
+        {/* Process nodes - adjust all cy values to move nodes up/down */}
         <g>
-          {/* Input Node */}
+          {/* Input Node - adjust cy="200" and y="240" together to move up/down */}
           <motion.circle
-            cx="100"
-            cy="200"
+            cx="150"
+            cy="300" // Vertical position of input node
             r="20"
             fill="rgba(0, 255, 255, 0.2)"
             stroke="rgba(0, 255, 255, 0.8)"
@@ -87,12 +87,12 @@ export default function ProcessFlow() {
             initial="initial"
             animate="animate"
           />
-          <text x="100" y="240" textAnchor="middle" fill="rgba(0, 255, 255, 0.8)" fontSize="14">Input</text>
+          <text x="150" y="340" textAnchor="middle" fill="rgba(0, 255, 255, 0.8)" fontSize="14">Input</text>
 
-          {/* Process Node */}
+          {/* Process Node - adjust cy="200" and y="240" together to move up/down */}
           <motion.circle
-            cx="200"
-            cy="200"
+            cx="250"
+            cy="300" // Vertical position of process node
             r="20"
             fill="rgba(0, 255, 255, 0.2)"
             stroke="rgba(0, 255, 255, 0.8)"
@@ -102,12 +102,12 @@ export default function ProcessFlow() {
             animate="animate"
             transition={{ delay: 0.5 }}
           />
-          <text x="200" y="240" textAnchor="middle" fill="rgba(0, 255, 255, 0.8)" fontSize="14">Process</text>
+          <text x="250" y="340" textAnchor="middle" fill="rgba(0, 255, 255, 0.8)" fontSize="14">Process</text>
 
-          {/* Output Node */}
+          {/* Output Node - adjust cy="200" and y="240" together to move up/down */}
           <motion.circle
-            cx="300"
-            cy="200"
+            cx="350"
+            cy="300" // Vertical position of output node
             r="20"
             fill="rgba(0, 255, 255, 0.2)"
             stroke="rgba(0, 255, 255, 0.8)"
@@ -117,15 +117,15 @@ export default function ProcessFlow() {
             animate="animate"
             transition={{ delay: 1 }}
           />
-          <text x="300" y="240" textAnchor="middle" fill="rgba(0, 255, 255, 0.8)" fontSize="14">Output</text>
+          <text x="350" y="340" textAnchor="middle" fill="rgba(0, 255, 255, 0.8)" fontSize="14">Output</text>
         </g>
 
-        {/* Animated flow paths */}
+        {/* Animated flow paths - adjust path coordinates to match node positions */}
         <g>
-          {/* Path from Input to Process */}
+          {/* Path from Input to Process - adjust the y coordinates in the path */}
           <motion.path
             ref={pathRef}
-            d="M120 200 C160 200, 160 200, 180 200"
+            d="M170 300 C260 300, 210 300, 230 300" // All "200" values control vertical position
             fill="none"
             stroke="rgba(0, 255, 255, 0.8)"
             strokeWidth="2"
@@ -134,9 +134,9 @@ export default function ProcessFlow() {
             animate="animate"
           />
           
-          {/* Path from Process to Output */}
+          {/* Path from Process to Output - adjust the y coordinates in the path */}
           <motion.path
-            d="M220 200 C260 200, 260 200, 280 200"
+            d="M270 300 C310 300, 310 300, 330 300" // All "200" values control vertical position
             fill="none"
             stroke="rgba(0, 255, 255, 0.8)"
             strokeWidth="2"
@@ -147,15 +147,15 @@ export default function ProcessFlow() {
           />
         </g>
 
-        {/* Animated particles */}
+        {/* Animated particles - adjust cy values to match path positions */}
         <motion.circle
           cx="0"
           cy="0"
           r="4"
           fill="rgba(0, 255, 255, 0.8)"
           animate={{
-            cx: [100, 200, 300],
-            cy: [200, 200, 200],
+            cx: [150, 200, 250],
+            cy: [300, 300, 300], // Adjust these values to match node heights
             opacity: [1, 1, 0]
           }}
           transition={{
@@ -171,15 +171,14 @@ export default function ProcessFlow() {
           r="4"
           fill="rgba(0, 255, 255, 0.8)"
           animate={{
-            cx: [100, 200, 300],
-            cy: [200, 200, 200],
+            cx: [250, 300, 350],
+            cy: [300, 300, 300], // Adjust these values to match node heights
             opacity: [1, 1, 0]
           }}
           transition={{
             duration: 2,
             repeat: Infinity,
             ease: "linear",
-            delay: 1
           }}
         />
       </svg>

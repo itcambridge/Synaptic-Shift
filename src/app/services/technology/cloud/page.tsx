@@ -10,7 +10,7 @@ export default function CloudTransformation() {
       title="Transform Your Business with Cloud Innovation"
       subtitle="Accelerate your digital transformation with cutting-edge cloud solutions"
       animation={
-        <div className="absolute left-1/2 -top-32 -translate-x-1/2">
+        <div className="absolute left-1/2 md:-top-32 -top-20 -translate-x-1/2">
           <div className="scale-150">
             <CloudEffect />
           </div>

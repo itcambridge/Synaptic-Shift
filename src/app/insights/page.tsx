@@ -14,6 +14,14 @@ const articles = [
     slug: "frankencoder-to-evolutionary"
   },
   {
+    title: "Unlocking Efficiency: The Power of Process Automation",
+    description: "Discover how process automation streamlines workflows and transforms business operations.",
+    category: "Automation",
+    readTime: "8 min read",
+    date: "2024-03-15",
+    slug: "process-automation"
+  },
+  {
     title: "The Future of AI in Financial Services",
     description: "Explore how artificial intelligence is revolutionizing banking, investment, and risk management.",
     category: "AI & Finance",
