@@ -43,6 +43,16 @@ const navigation = {
     {
       name: 'Insights',
       href: '/insights',
+      megaMenu: [
+        {
+          items: [
+            { name: 'Latest Articles', href: '/insights' },
+            { name: 'AI & Finance', href: '/insights/category/ai-finance' },
+            { name: 'Manufacturing', href: '/insights/category/manufacturing' },
+            { name: 'Security', href: '/insights/category/security' },
+          ],
+        }
+      ],
     },
     {
       name: 'About',

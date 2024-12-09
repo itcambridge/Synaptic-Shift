@@ -13,6 +13,7 @@ interface ServicePageLayoutProps {
   subtitle: string
   animation: React.ReactNode
   buttonText: string
+  onButtonClick?: () => void
   children: React.ReactNode
 }
 
@@ -21,6 +22,7 @@ export default function ServicePageLayout({
   subtitle,
   animation,
   buttonText,
+  onButtonClick,
   children,
 }: ServicePageLayoutProps) {
   return (
@@ -29,8 +31,10 @@ export default function ServicePageLayout({
         <Navbar />
         {/* Background Effects */}
         <div className="fixed inset-0 z-0">
-          <ParticleBackground />
-          <GridPattern />
+          <div className="opacity-30">
+            <ParticleBackground />
+            <GridPattern />
+          </div>
           <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.1),rgba(0,0,0,0))]" />
         </div>
 
@@ -43,12 +47,12 @@ export default function ServicePageLayout({
             </div>
 
             <div className="relative z-10 mx-auto flex min-h-[calc(100vh-104px)] max-w-7xl flex-col items-center justify-center px-4">
-              <div className="w-full max-w-4xl">
+              <div className="w-full max-w-4xl pt-20 sm:pt-0">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="flex flex-col items-center space-y-8"
+                  className="flex flex-col items-center space-y-12 sm:space-y-8"
                 >
                   <div className="relative">
                     {animation}
@@ -75,11 +79,17 @@ export default function ServicePageLayout({
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                   >
-                    <Link href="/assessment">
-                      <GradientButton>
+                    {onButtonClick ? (
+                      <GradientButton onClick={onButtonClick}>
                         {buttonText}
                       </GradientButton>
-                    </Link>
+                    ) : (
+                      <Link href="/assessment">
+                        <GradientButton>
+                          {buttonText}
+                        </GradientButton>
+                      </Link>
+                    )}
                   </motion.div>
                 </motion.div>
               </div>

@@ -9,13 +9,7 @@ export default function Banking() {
     <ServicePageLayout
       title="Banking & Capital Markets"
       subtitle="Transform banking for the digital age. Innovate with AI-driven financial solutions and secure platforms."
-      animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
-          <div className="scale-75">
-            <IntelligentAnalysisHub />
-          </div>
-        </div>
-      }
+      animation={<IntelligentAnalysisHub />}
       buttonText="Explore Banking Solutions"
     >
       {/* Services Grid Section */}

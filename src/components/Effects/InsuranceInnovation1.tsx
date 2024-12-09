@@ -37,10 +37,10 @@ export default function InsuranceInnovation() {
   }, [])
 
   return (
-    <div className="relative h-96 w-96">
+    <div className="relative h-animation-md w-animation-md sm:h-animation-lg sm:w-animation-lg mx-auto">
       {/* Background Glow */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 z-animation-bg"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0.1, 0.2, 0.1] }}
         transition={{
@@ -53,7 +53,11 @@ export default function InsuranceInnovation() {
         }}
       />
 
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 300">
+      <svg 
+        className="absolute inset-0 h-full w-full" 
+        viewBox="0 0 300 300" 
+        preserveAspectRatio="xMidYMid meet"
+      >
         {/* Sky Background with moving clouds */}
         <motion.path
           d="M 50,50 Q 100,30 150,50 T 250,50"
@@ -191,7 +195,7 @@ export default function InsuranceInnovation() {
 
       {/* Insights Text */}
       <motion.div
-        className="absolute inset-x-0 top-1/2 mt-40 text-center"
+        className="absolute inset-x-0 bottom-animation-sm sm:bottom-animation-md text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}

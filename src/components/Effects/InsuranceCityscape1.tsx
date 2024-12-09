@@ -12,18 +12,19 @@ const weatherData = [
   "Smart City Monitoring Active"
 ]
 
-// HEIGHT: Building heights affect overall vertical space
+// Building definitions with different heights and widths
 const buildings = [
-  { x: 45, width: 30, height: 100 },  // HEIGHT: 120px tall
-  { x: 80, width: 40, height: 160 },  // HEIGHT: 180px tall
-  { x: 125, width: 50, height: 130 }, // HEIGHT: 150px tall
-  { x: 180, width: 45, height: 180 }, // HEIGHT: 200px tall - tallest building
-  { x: 230, width: 35, height: 140 }  // HEIGHT: 160px tall
+  { x: 40, width: 30, height: 120 },
+  { x: 80, width: 40, height: 180 },
+  { x: 130, width: 50, height: 150 },
+  { x: 190, width: 45, height: 200 },
+  { x: 245, width: 35, height: 160 }
 ]
 
 // Car paths along the "roads"
 const carPaths = [
-  "M 30,340 L 270,340"  // Keep only one path for a single truck
+  "M 30,240 L 270,240",
+  "M 270,260 L 30,260"
 ]
 
 export default function InsuranceCityscape() {
@@ -45,7 +46,6 @@ export default function InsuranceCityscape() {
   }, [])
 
   return (
-    // HEIGHT: Overall container height
     <div className="relative h-96 w-96">
       {/* Background Glow */}
       <motion.div
@@ -62,7 +62,7 @@ export default function InsuranceCityscape() {
         }}
       />
 
-      {/* HEIGHT: Weather text position from top */}
+      {/* Weather Data Display */}
       <motion.div
         className="absolute inset-x-0 top-8 text-center"
         initial={{ opacity: 0 }}
@@ -81,9 +81,8 @@ export default function InsuranceCityscape() {
         </motion.p>
       </motion.div>
 
-      {/* HEIGHT: SVG viewBox height of 300 defines coordinate space */}
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 300">
-        {/* HEIGHT: Cloud path Y positions */}
+        {/* Sky Background with moving clouds */}
         <motion.path
           d="M 50,50 Q 100,30 150,50 T 250,50"
           fill="none"
@@ -93,9 +92,9 @@ export default function InsuranceCityscape() {
           animate={{ 
             opacity: [0.2, 0.4, 0.2],
             d: [
-              "M 50,50 Q 100,30 150,50 T 250,50",    // HEIGHT: Cloud at y=50
-              "M 50,50 Q 100,70 150,50 T 250,50",    // HEIGHT: Cloud moves to y=70
-              "M 50,50 Q 100,30 150,50 T 250,50"     // HEIGHT: Cloud back to y=50
+              "M 50,50 Q 100,30 150,50 T 250,50",
+              "M 50,50 Q 100,70 150,50 T 250,50",
+              "M 50,50 Q 100,30 150,50 T 250,50"
             ]
           }}
           transition={{
@@ -108,12 +107,12 @@ export default function InsuranceCityscape() {
         {/* Buildings with glowing windows */}
         {buildings.map((building, index) => (
           <g key={index}>
-            {/* HEIGHT: Building position and height */}
+            {/* Building Structure */}
             <motion.rect
               x={building.x}
-              y={240 - building.height}  // HEIGHT: Buildings start at y=240 and go up by their height
+              y={240 - building.height}
               width={building.width}
-              height={building.height}   // HEIGHT: Actual building height
+              height={building.height}
               fill="rgba(0, 255, 255, 0.1)"
               stroke="rgba(0, 255, 255, 0.3)"
               strokeWidth="1"
@@ -126,12 +125,12 @@ export default function InsuranceCityscape() {
               }}
             />
 
-            {/* HEIGHT: Window positions */}
+            {/* Glowing Windows */}
             {Array.from({ length: Math.floor(building.height / 20) }).map((_, windowIndex) => (
               <motion.rect
                 key={windowIndex}
                 x={building.x + 5}
-                y={220 - windowIndex * 20}  // HEIGHT: Windows start at y=220 and go up by 20px each
+                y={220 - windowIndex * 20}
                 width={building.width - 10}
                 height={10}
                 fill="rgba(0, 255, 255, 0.2)"
@@ -146,7 +145,7 @@ export default function InsuranceCityscape() {
               />
             ))}
 
-            {/* HEIGHT: Icon positions above buildings */}
+            {/* Holographic Insurance Icons */}
             {index % 2 === 0 && (
               <motion.g
                 initial={{ opacity: 0, scale: 0 }}
@@ -162,7 +161,7 @@ export default function InsuranceCityscape() {
               >
                 <foreignObject
                   x={building.x}
-                  y={240 - building.height - 40}  // HEIGHT: Icons 40px above buildings
+                  y={240 - building.height - 40}
                   width={building.width}
                   height={30}
                 >
@@ -191,12 +190,11 @@ export default function InsuranceCityscape() {
                 ease: "linear"
               }}
             >
-              {/* HEIGHT: Car vertical positions */}
               <foreignObject
                 width={20}
                 height={20}
                 style={{
-                  transform: `translate(${index % 2 === 0 ? '0' : '270'}px, ${238 + index * 20}px)`  // HEIGHT: Cars at y=230 and y=250
+                  transform: `translate(${index % 2 === 0 ? '0' : '270'}px, ${230 + index * 20}px)`
                 }}
               >
                 <TruckIcon className="h-5 w-5 text-cyan-300" />
@@ -220,15 +218,15 @@ export default function InsuranceCityscape() {
               <animateMotion
                 dur="4s"
                 repeatCount="indefinite"
-                path={path}  // HEIGHT: Uses carPaths y-positions (240 and 260)
+                path={path}
               />
             </motion.circle>
           </g>
         ))}
 
-        {/* HEIGHT: Logo position */}
+        {/* Synaptic Shift Logo Formation */}
         <motion.path
-          d="M 150,150 L 170,130 L 130,130 Z"  // HEIGHT: Logo at y=10-150
+          d="M 150,150 L 170,130 L 130,130 Z"
           fill="none"
           stroke="rgba(0, 255, 255, 0.6)"
           strokeWidth="2"
@@ -245,9 +243,9 @@ export default function InsuranceCityscape() {
         />
       </svg>
 
-      {/* HEIGHT: Tagline position from bottom */}
+      {/* Tagline */}
       <motion.div
-        className="absolute inset-x-0 bottom-10 text-center"
+        className="absolute inset-x-0 bottom-16 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0.6, 1, 0.6] }}
         transition={{

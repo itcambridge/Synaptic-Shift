@@ -8,13 +8,7 @@ export default function Energy() {
     <ServicePageLayout
       title="Smart Energy Solutions"
       subtitle="Powering the future with intelligent grid technology"
-      animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
-          <div className="scale-75">
-            <EnergyDistribution />
-          </div>
-        </div>
-      }
+      animation={<EnergyDistribution />}
       buttonText="Power Your Innovation"
     >
       {/* Services Grid Section */}

@@ -13,10 +13,10 @@ const insights = [
 
 // Machine positions for the production line
 const machines = [
-  { x: 60, y: 120, width: 40, height: 60 },  // Raw material intake
-  { x: 120, y: 120, width: 50, height: 60 }, // Processing
-  { x: 190, y: 120, width: 45, height: 60 }, // Assembly
-  { x: 250, y: 120, width: 40, height: 60 }  // Final product
+  { x: 30, y: 120, width: 45, height: 60 },  // Raw material intake
+  { x: 95, y: 120, width: 45, height: 60 }, // Processing
+  { x: 160, y: 120, width: 45, height: 60 }, // Assembly
+  { x: 225, y: 120, width: 45, height: 60 }  // Final product
 ]
 
 // Particle paths through the machines
@@ -47,193 +47,180 @@ export default function ManufacturingFlow() {
   }, [])
 
   return (
-    <div className="relative h-80 w-96">
-      {/* Background Glow */}
-      <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0.1, 0.2, 0.1] }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        style={{
-          background: 'radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%)'
-        }}
-      />
-
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 300">
-        {/* Dashboard Display */}
-        <motion.rect
-          x="70"
-          y="20"
-          width="160"
-          height="60"
-          fill="rgba(0, 255, 255, 0.1)"
-          stroke="rgba(0, 255, 255, 0.4)"
-          strokeWidth="1"
+    <div className="absolute inset-0">
+      {/* Animation content */}
+      <div className="relative h-full">
+        {/* Background Glow */}
+        <motion.div
+          className="absolute inset-0"
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0.4, 0.6, 0.4] }}
+          animate={{ opacity: [0.1, 0.2, 0.1] }}
           transition={{
-            duration: 3,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-        />
-
-        {/* Efficiency Graph in Dashboard */}
-        <motion.path
-          d="M 80,50 L 90,48 L 100,52 L 110,48 L 120,52 L 130,48 L 140,52 L 150,48 L 160,52 L 170,48 L 180,52 L 190,48 L 200,52"
-          stroke="rgba(0, 255, 255, 0.8)"
-          strokeWidth="2"
-          fill="none"
-          animate={{
-            x: [-20, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "linear"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%)'
           }}
         />
 
-        {/* Additional Graph Line for Seamless Loop */}
-        <motion.path
-          d="M 80,50 L 90,48 L 100,52 L 110,48 L 120,52 L 130,48 L 140,52 L 150,48 L 160,52 L 170,48 L 180,52 L 190,48 L 200,52"
-          stroke="rgba(0, 255, 255, 0.8)"
-          strokeWidth="2"
-          fill="none"
-          animate={{
-            x: [0, 20],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 300">
+          {/* Dashboard Display */}
+          <motion.rect
+            x="50"
+            y="30"
+            width="200"
+            height="60"
+            fill="rgba(0, 255, 255, 0.1)"
+            stroke="rgba(0, 255, 255, 0.4)"
+            strokeWidth="1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.4, 0.6, 0.4] }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
-        {/* Production Line Base */}
-        <motion.rect
-          x="30"
-          y="170"
-          width="240"
-          height="4"
-          fill="rgba(0, 255, 255, 0.3)"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        />
+          {/* Efficiency Graph in Dashboard */}
+          <motion.path
+            d="M 80,50 L 90,48 L 100,52 L 110,48 L 120,52 L 130,48 L 140,52 L 150,48 L 160,52 L 170,48 L 180,52 L 190,48 L 200,52"
+            stroke="rgba(0, 255, 255, 0.8)"
+            strokeWidth="2"
+            fill="none"
+            animate={{
+              x: [-20, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
 
-        {/* Manufacturing Machines */}
-        {machines.map((machine, index) => (
-          <g key={index}>
-            <motion.rect
-              x={machine.x}
-              y={machine.y}
-              width={machine.width}
-              height={machine.height}
-              fill="rgba(0, 255, 255, 0.1)"
-              stroke="rgba(0, 255, 255, 0.4)"
-              strokeWidth="1"
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: [0.4, 0.8, 0.4],
-                fill: `rgba(0, 255, 255, ${0.1 + (efficiency % 20) / 100})`
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: index * 0.2
-              }}
-            />
-            {/* Machine Processing Indicators */}
+          {/* Production Line Base */}
+          <motion.rect
+            x="30"
+            y="170"
+            width="240"
+            height="4"
+            fill="rgba(0, 255, 255, 0.3)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          />
+
+          {/* Manufacturing Machines */}
+          {machines.map((machine, index) => (
+            <g key={index}>
+              <motion.rect
+                x={machine.x}
+                y={machine.y}
+                width={machine.width}
+                height={machine.height}
+                fill="rgba(0, 255, 255, 0.1)"
+                stroke="rgba(0, 255, 255, 0.4)"
+                strokeWidth="1"
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0.4, 0.8, 0.4],
+                  fill: `rgba(0, 255, 255, ${0.1 + (efficiency % 20) / 100})`
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.2
+                }}
+              />
+              {/* Machine Processing Indicators */}
+              <motion.circle
+                cx={machine.x + machine.width / 2}
+                cy={machine.y + 15}
+                r="4"
+                fill="rgba(0, 255, 255, 0.8)"
+                initial={{ scale: 0.8 }}
+                animate={{
+                  scale: [0.8, 1.2, 0.8],
+                  opacity: [0.5, 1, 0.5]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.3
+                }}
+              />
+            </g>
+          ))}
+
+          {/* Moving Particles */}
+          {[0, 1, 2].map((particleIndex) => (
             <motion.circle
-              cx={machine.x + machine.width / 2}
-              cy={machine.y + 15}
+              key={`particle-${particleIndex}`}
               r="4"
               fill="rgba(0, 255, 255, 0.8)"
-              initial={{ scale: 0.8 }}
+              initial={{ opacity: 0 }}
               animate={{
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.5, 1, 0.5]
+                opacity: [0, 1, 1, 0],
+                x: particlePath.map(p => p.x),
+                y: particlePath.map(p => p.y),
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear",
+                delay: particleIndex * 1.3,
+                times: [0, 0.2, 0.8, 1]
+              }}
+            />
+          ))}
+
+          {/* Connection Lines */}
+          {machines.slice(0, -1).map((machine, index) => (
+            <motion.line
+              key={`connection-${index}`}
+              x1={machine.x + machine.width}
+              y1={machine.y + machine.height / 2}
+              x2={machines[index + 1].x}
+              y2={machines[index + 1].y + machines[index + 1].height / 2}
+              stroke="rgba(0, 255, 255, 0.3)"
+              strokeWidth="2"
+              strokeDasharray="4,4"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3]
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: index * 0.3
+                delay: index * 0.2
               }}
             />
-          </g>
-        ))}
+          ))}
+        </svg>
 
-        {/* Moving Particles */}
-        {[0, 1, 2].map((particleIndex) => (
-          <motion.circle
-            key={`particle-${particleIndex}`}
-            r="4"
-            fill="rgba(0, 255, 255, 0.8)"
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: [0, 1, 1, 0],
-              x: particlePath.map(p => p.x),
-              y: particlePath.map(p => p.y),
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "linear",
-              delay: particleIndex * 1.3,
-              times: [0, 0.2, 0.8, 1]
-            }}
-          />
-        ))}
-
-        {/* Connection Lines between Machines */}
-        {machines.slice(0, -1).map((machine, index) => (
-          <motion.line
-            key={`connection-${index}`}
-            x1={machine.x + machine.width}
-            y1={machine.y + machine.height / 2}
-            x2={machines[index + 1].x}
-            y2={machines[index + 1].y + machines[index + 1].height / 2}
-            stroke="rgba(0, 255, 255, 0.3)"
-            strokeWidth="2"
-            strokeDasharray="4,4"
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: [0.3, 0.6, 0.3]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.2
-            }}
-          />
-        ))}
-      </svg>
-
-      {/* Insights Text */}
-      <motion.div
-        className="absolute inset-x-0 top-3/4 mt-8 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.p
-          key={activeInsight}
-          className="text-sm font-mono text-cyan-300"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+        {/* Insights Text */}
+        <motion.div
+          className="absolute bottom-8 inset-x-0 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {insights[activeInsight]}
-        </motion.p>
-      </motion.div>
+          <motion.p
+            key={activeInsight}
+            className="text-sm font-mono text-cyan-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            {insights[activeInsight]}
+          </motion.p>
+        </motion.div>
+      </div>
     </div>
   )
 } 
