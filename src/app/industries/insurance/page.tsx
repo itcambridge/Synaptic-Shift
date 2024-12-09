@@ -10,7 +10,7 @@ export default function Insurance() {
       title="Insurance Innovation"
       subtitle="Modernize insurance operations with AI-driven solutions and digital transformation"
       animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+        <div className="absolute left-1/2 md:-top-80 -top-40 -translate-x-1/2">
           <div className="scale-75">
             <InsuranceCityscape />
           </div>

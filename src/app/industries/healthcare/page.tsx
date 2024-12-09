@@ -10,7 +10,7 @@ export default function Healthcare() {
       title="Healthcare Innovation"
       subtitle="Transform healthcare delivery with AI-driven solutions and digital innovation"
       animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+        <div className="absolute left-1/2 md:-top-80 -top-60 -translate-x-1/2">
           <div className="scale-75">
             <DiagnosticLab />
           </div>

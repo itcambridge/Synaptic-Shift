@@ -9,7 +9,7 @@ export default function Retail() {
       title="Retail Innovation"
       subtitle="Transform retail experiences with intelligent digital solutions"
       animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+        <div className="absolute left-1/2 md:-top-80 -top-40 -translate-x-1/2">
           <div className="scale-75">
             <RetailAutomation />
           </div>

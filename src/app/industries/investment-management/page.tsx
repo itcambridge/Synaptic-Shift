@@ -10,7 +10,7 @@ export default function InvestmentManagement() {
       title="Investment Management Innovation"
       subtitle="Transform investment strategies with AI-driven insights and automation"
       animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+        <div className="absolute left-1/2 md:-top-80 -top-60 -translate-x-1/2">
           <div className="scale-75">
             <FinancialUniverse />
           </div>
