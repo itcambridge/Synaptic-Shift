@@ -9,7 +9,7 @@ const generateClusters = (count: number) => {
     delay: Math.random() * 2,
     duration: Math.random() * 10 + 15,
     initialX: Math.random() * 300,
-    initialY: Math.random() * 300,
+    initialY: Math.random() * 500,  // Controls initial vertical position of each cluster
   }))
 }
 
@@ -18,8 +18,10 @@ export default function DataClusters() {
   const smallClusters = generateClusters(25)
 
   return (
-    <div className="relative h-96 w-96">
+    // Container height affects overall vertical space
+    <div className="relative h-86 w-96">
       {/* Background glow */}
+      {/* inset-0 affects top/bottom positioning */}
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
@@ -41,13 +43,19 @@ export default function DataClusters() {
           className="absolute"
           initial={{
             x: cluster.initialX,
-            y: cluster.initialY,
+            y: cluster.initialY, // Initial y position of large cluster
             opacity: 0,
             scale: 0.5
           }}
           animate={{
             x: [cluster.initialX, cluster.initialX + 50, cluster.initialX - 30, cluster.initialX],
-            y: [cluster.initialY, cluster.initialY - 30, cluster.initialY + 50, cluster.initialY],
+            // Y animation: start -> move up -> move down -> return to start
+            y: [
+              cluster.initialY,
+              cluster.initialY - 30,
+              cluster.initialY + 50,
+              cluster.initialY
+            ],
             opacity: [0.9, 1, 0.9],
             scale: [1, 1.2, 1]
           }}
@@ -62,7 +70,7 @@ export default function DataClusters() {
             className="rounded-full bg-cyan-500/40"
             style={{
               width: cluster.size,
-              height: cluster.size,
+              height: cluster.size, // Height of cluster circle
               filter: 'blur(4px)',
               boxShadow: '0 0 40px rgba(0, 255, 255, 0.6)'
             }}
@@ -77,13 +85,19 @@ export default function DataClusters() {
           className="absolute"
           initial={{
             x: cluster.initialX,
-            y: cluster.initialY,
+            y: cluster.initialY, // Initial y position of small cluster
             opacity: 0,
             scale: 0.5
           }}
           animate={{
             x: [cluster.initialX, cluster.initialX + 30, cluster.initialX - 20, cluster.initialX],
-            y: [cluster.initialY, cluster.initialY - 20, cluster.initialY + 30, cluster.initialY],
+            // Y animation: start -> move up -> move down -> return to start
+            y: [
+              cluster.initialY,
+              cluster.initialY - 20,
+              cluster.initialY + 30,
+              cluster.initialY
+            ],
             opacity: [0.5, 0.7, 0.5],
             scale: [1, 1.1, 1]
           }}
@@ -98,7 +112,7 @@ export default function DataClusters() {
             className="rounded-full bg-cyan-400/30"
             style={{
               width: cluster.size * 0.5,
-              height: cluster.size * 0.5,
+              height: cluster.size * 0.5, // Height of small cluster circle
               filter: 'blur(2px)',
               boxShadow: '0 0 20px rgba(0, 255, 255, 0.4)'
             }}
@@ -106,8 +120,9 @@ export default function DataClusters() {
         </motion.div>
       ))}
 
-      {/* Connection lines */}
+      {/* Connection lines - SVG height affects line positions */}
       <svg className="absolute inset-0 h-full w-full">
+        {/* First curve: Y coordinates 150, 50, 150, 150 control curve height */}
         <motion.path
           stroke="rgba(0, 255, 255, 0.3)"
           strokeWidth="1"
@@ -125,6 +140,7 @@ export default function DataClusters() {
           }}
           d="M50,150 Q150,50 250,150 T450,150"
         />
+        {/* Second curve: Y coordinates 100, 200, 100, 100 control curve height */}
         <motion.path
           stroke="rgba(0, 255, 255, 0.3)"
           strokeWidth="1"
