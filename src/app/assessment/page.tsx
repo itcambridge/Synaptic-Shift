@@ -148,6 +148,19 @@ export default function Assessment() {
   }
 
   const handleSubmit = async () => {
+    // Validate contact details
+    if (!contactDetails.name || !contactDetails.email || !contactDetails.company || !contactDetails.phone) {
+      alert('Please fill in all contact details before submitting.')
+      return
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(contactDetails.email)) {
+      alert('Please enter a valid email address.')
+      return
+    }
+
     const emailBody = `
 Assessment Results:
 
@@ -180,9 +193,13 @@ Phone: ${contactDetails.phone}
       if (response.ok) {
         setSubmitted(true)
         setShowContactForm(false)
+      } else {
+        const errorData = await response.json()
+        alert(`Failed to submit assessment: ${errorData.details || 'Unknown error'}`)
       }
     } catch (error) {
       console.error('Error sending assessment:', error)
+      alert('Failed to submit assessment. Please try again later.')
     }
   }
 
@@ -384,7 +401,8 @@ Phone: ${contactDetails.phone}
               <div className="mt-6 flex justify-end">
                 <button
                   onClick={handleSubmit}
-                  className="rounded bg-cyan-500 px-6 py-2 text-black transition-colors duration-200 hover:bg-cyan-400"
+                  className="rounded bg-cyan-500 px-6 py-2 text-black transition-colors duration-200 hover:bg-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!contactDetails.name || !contactDetails.email || !contactDetails.company || !contactDetails.phone}
                 >
                   Submit Assessment
                 </button>
