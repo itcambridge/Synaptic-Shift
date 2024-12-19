@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
+import KnowledgeFlowNetwork from '@/components/Effects/KnowledgeFlowNetwork'
 
 export default function SubscribePage() {
   const [email, setEmail] = useState('')
@@ -46,10 +47,16 @@ Please add this email to the newsletter distribution list.
 
   return (
     <ServicePageLayout
-      title="Subscribe to Our Newsletter"
-      subtitle="Stay updated with our latest insights, industry trends, and technology innovations"
+      title="Stay Informed"
+      subtitle="Subscribe to our newsletter for the latest insights and innovations"
       buttonText=""
-      animation={null}
+      animation={
+        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+          <div className="scale-75">
+            <KnowledgeFlowNetwork />
+          </div>
+        </div>
+      }
     >
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

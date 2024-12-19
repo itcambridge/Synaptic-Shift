@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ServicePageLayout from '@/components/Layout/ServicePageLayout'
-import IntelligentAnalysisHub from '@/components/Effects/IntelligentAnalysisHub'
+import BusinessPotentialCube from '@/components/Effects/BusinessPotentialCube'
 
 interface Question {
   id: string
@@ -34,6 +34,7 @@ export default function Assessment() {
     phone: ''
   })
   const [showContactForm, setShowContactForm] = useState(false)
+  const assessmentRef = useRef<HTMLDivElement>(null)
 
   const sections = [
     'Profitability: Where Do the Profits Come From?',
@@ -205,20 +206,25 @@ Phone: ${contactDetails.phone}
 
   const currentQuestions = questions.filter(q => q.section === sections[currentSection].split(':')[0])
 
+  const scrollToAssessment = () => {
+    assessmentRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <ServicePageLayout
-      title="Business Value Assessment"
+      title="Illuminate Your Business Potential"
       subtitle="Discover how AI and technology can transform your business"
       animation={
-        <div className="absolute left-1/2 -top-80 -translate-x-1/2">
+        <div className="absolute left-1/2 md:-top-96 -top-90 -translate-x-1/2">
           <div className="scale-75">
-            <IntelligentAnalysisHub />
+            <BusinessPotentialCube />
           </div>
         </div>
       }
       buttonText="Start Your Assessment"
+      onButtonClick={scrollToAssessment}
     >
-      <div className="mx-auto max-w-4xl px-4 py-12">
+      <div ref={assessmentRef} className="mx-auto max-w-4xl px-4 py-12">
         <div className="rounded-2xl border border-cyan-800/20 bg-black/50 p-8 backdrop-blur-sm">
           <p className="mb-8 text-lg text-cyan-100/90">
             Are you curious about how AI and technology can drive profits and reduce costs in your business? 

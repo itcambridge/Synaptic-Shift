@@ -85,7 +85,7 @@ export default function ServicePageLayout({
                           {buttonText}
                         </GradientButton>
                       ) : (
-                        <Link href="/subscribe">
+                        <Link href={buttonText === "Subscribe to Updates" ? "/subscribe" : "/assessment"}>
                           <GradientButton>
                             {buttonText}
                           </GradientButton>

@@ -200,45 +200,55 @@ export default function Navbar() {
               <div className="space-y-1 px-4 pb-3 pt-2">
                 {navigation.main.map((item) => (
                   <div key={item.name}>
-                    <button
-                      onClick={() => setOpenMenu(openMenu === item.name ? null : item.name)}
-                      className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-300 hover:text-white"
-                    >
-                      <span>{item.name}</span>
-                      {item.megaMenu && (
-                        <ChevronDownIcon
-                          className={`h-5 w-5 transition-transform duration-200 ${
-                            openMenu === item.name ? 'rotate-180' : ''
-                          }`}
-                        />
-                      )}
-                    </button>
+                    {item.megaMenu ? (
+                      <>
+                        <button
+                          onClick={() => setOpenMenu(openMenu === item.name ? null : item.name)}
+                          className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-300 hover:text-white"
+                        >
+                          <span>{item.name}</span>
+                          <ChevronDownIcon
+                            className={`h-5 w-5 transition-transform duration-200 ${
+                              openMenu === item.name ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
 
-                    {item.megaMenu && openMenu === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="ml-4 space-y-2"
+                        {openMenu === item.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="ml-4 space-y-2"
+                          >
+                            {item.megaMenu.map((section) => (
+                              <div key={section.items[0].name}>
+                                <ul className="mt-2 space-y-2">
+                                  {section.items.map((subItem) => (
+                                    <li key={subItem.name}>
+                                      <Link
+                                        href={subItem.href}
+                                        className="block text-sm text-gray-400 hover:text-white"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                      >
+                                        {subItem.name}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block py-2 text-base font-medium text-gray-300 hover:text-white"
                       >
-                        {item.megaMenu.map((section) => (
-                          <div key={section.items[0].name}>
-                            <ul className="mt-2 space-y-2">
-                              {section.items.map((subItem) => (
-                                <li key={subItem.name}>
-                                  <Link
-                                    href={subItem.href}
-                                    className="block text-sm text-gray-400 hover:text-white"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </motion.div>
+                        {item.name}
+                      </Link>
                     )}
                   </div>
                 ))}
